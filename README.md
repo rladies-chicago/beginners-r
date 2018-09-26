@@ -12,4 +12,4 @@ Materials for our "R Tours" as well as other useful resources for getting starte
 
 Let's go and hack the planet! #RLadies_Chicago
 
-![IT Crowd gif](https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif)
+![IT Crowd gif](https://media.giphy.com/media/1C8bHHJturSx2/giphy.gif)
