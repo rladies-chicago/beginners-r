@@ -45,4 +45,6 @@ An aesthetic is a visual property of the objects in your plot. Aesthetics includ
 - The [ggplot cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)   
 - The [R Graph Gallery](https://www.r-graph-gallery.com/)  
   
+  
+We also have an R-Ladies ggplot2 theme! We have a local file in this repo, but see the original one at the [R-Ladies Starter Kit](https://github.com/rladies/starter-kit/blob/master/rladiesggplot2theme.R)  
  
