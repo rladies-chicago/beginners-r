@@ -45,6 +45,6 @@ question
 # Plotting --------------------------------
 ## Plot trajectories 
 ggplot(question,aes(x=Age,y=Proportion,group=definition,color=definition)) +
-  geom_line() +
-  xlab("Age (months)") +
+  geom_line() + # Make this a line graph
+  xlab("Age (months)") + # Add x and y axis labels
   ylab("Proportion of Children Producing")
