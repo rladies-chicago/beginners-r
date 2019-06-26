@@ -11,6 +11,7 @@ Here are more resources to guide you in your journey to understanding R.
 ## Tidyverse
 
 [R for Data Science](https://r4ds.had.co.nz/)
+[Jenny Bryan's Stats 545](http://stat545.com/topics.html)
 [dplyr](https://dplyr.tidyverse.org/)
 
 ## Blogs/Podcasts

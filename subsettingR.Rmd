@@ -1,0 +1,175 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+So, I've just finished up the R Programming course that is apart of Coursera's John Hopkins Data Science specialization. And I must say that it did some judo mortal kombat moves on my mind. This course is not beginner friend but I've learned a lot and I think it's safe to say that I am becoming a master at subsetting and filtering data in R. In retrospect if you are planning to take this specialization you should do the Getting and Cleaning Data Course before you start the R Programming course.
+
+A collection of notes on how to select different rows and columns within R.
+
+R has four main data structures to store and manipulate data which are vectors, matrices, data frames, and list. So far in my on again off again relationship with R I mostly worked with data frames. I will be using the airquality dataset that comes preinstalled in R.
+
+Selecting
+```{r}
+data("airquality")
+
+
+names("airquality")
+names(airquality)
+```
+ [1] "Ozone" "Solar.R" "Wind" "Temp" "Month" "Day"
+```{r}
+head(airquality)
+```
+ Ozone Solar.R Wind Temp Month Day
+ 1 41 190 7.4 67 5 1
+ 2 36 118 8.0 72 5 2
+ 3 12 149 12.6 74 5 3
+ 4 18 313 11.5 62 5 4
+ 5 NA NA 14.3 56 5 5
+ 6 28 NA 14.9 66 5 6
+ 
+Subsetting data by index.
+While subsetting the placement of the comma is important.
+
+Extracting a specific observation(row) make sure that you include a comma to the right of the object you are extracting from. DONT FORGET THE COMMA
+
+```{r}
+airquality[1,]
+```
+ Ozone Solar.R Wind Temp Month Day
+1 41 190 7.4 67 5 1
+# First two rows and all columns
+
+```{r}
+airquality[1:2,]
+```
+ Ozone Solar.R Wind Temp Month Day
+1 41 190 7.4 67 5 1
+2 36 118 8.0 72 5 2
+
+
+Extracting a specific variable(column)make sure that you include a comma to the left of the object you are extracting from.
+
+# First column and all rows
+
+```{r}
+airquality[,1]
+
+```
+ [1] 41 36 12 18 NA 28 23 19 8 NA 7 16 11 14 18 14 34 6 30 11 1 11 4 32
+ [25] NA NA NA 23 45 115 37 NA NA NA NA NA NA 29 NA 71 39 NA NA 23 NA NA 21 37
+ [49] 20 12 13 NA NA NA NA NA NA NA NA NA NA 135 49 32 NA 64 40 77 97 97 85 NA
+ [73] 10 27 NA 7 48 35 61 79 63 16 NA NA 80 108 20 52 82 50 64 59 39 9 16 78
+ [97] 35 66 122 89 110 NA NA 44 28 65 NA 22 59 23 31 44 21 9 NA 45 168 73 NA 76
+[121] 118 84 85 96 78 73 91 47 32 20 23 21 24 44 21 28 9 13 46 18 13 24 16 13
+[145] 23 36 7 14 30 NA 14 18 20
+#First two columns and all rows
+
+```{r}
+airquailty[,1:2]
+```
+ Ozone Solar.R
+1 41 190
+2 36 118
+3 12 149
+4 18 313
+5 NA NA
+6 28 NA
+7 23 299
+
+You can also select a column from data frame using the variable name with a dollar sign
+
+```{r}
+ airquality$Ozone
+```
+
+ [1] 41 36 12 18 NA 28 23 19 8 NA 7 16 11 14 18 14 34 6 30 11 1 11 4 32
+ [25] NA NA NA 23 45 115 37 NA NA NA NA NA NA 29 NA 71 39 NA NA 23 NA NA 21 37
+ [49] 20 12 13 NA NA NA NA NA NA NA NA NA NA 135 49 32 NA 64 40 77 97 97 85 NA
+ [73] 10 27 NA 7 48 35 61 79 63 16 NA NA 80 108 20 52 82 50 64 59 39 9 16 78
+ [97] 35 66 122 89 110 NA NA 44 28 65 NA 22 59 23 31 44 21 9 NA 45 168 73 NA 76
+[121] 118 84 85 96 78 73 91 47 32 20 23 21 24 44 21 28 9 13 46 18 13 24 16 13
+[145] 23 36 7 14 30 NA 14 18 20
+These are all the observations from the Ozone column
+
+Extracting multiple columns from a data frame
+
+df[,c("A","B","E")] source Stack Overflow
+
+```{r}
+head(airquality[,c("Ozone","Temp")])
+```
+ Ozone Temp
+1 41 67
+2 36 72
+3 12 74
+4 18 62
+5 NA 56
+6 28 66
+
+
+You can also filter data when you are making a selection by using basic logic statements
+
+Basic Logic statements
+
+Operator	Description
+==	equal
+!=	Not equal | >	greater than | <	less than | <=	less than or equal | >	greater than or equal
+!	NOT | &	And |	Or
+
+%in%	match returns a vector of the positions of (first) matches of its first argument in its second.
+
+Logical Function	Description
+which.min	Index of the minimum value
+which.max	index of the maximum value
+
+Extract the subset of rows of the data frame where Ozone values are above 31 
+and Temp values are above 90.
+```{r}
+myset<-data[data$Ozone>31 & data$Temp>90,]
+```
+Extract the subset of rows of the data frame where Month values equal 5,7,8
+```{r}
+airquality[airquality$Month %in% c(5,7,8),]
+```
+
+What is the mean of "Temp" when "Month" is equal to 6?
+```{r}
+june <-airquality[airquality$Month==6,]
+mean(june$Temp, na.rm=TRUE)
+```
+
+What was the maximum ozone value in the month of May (i.e. Month is equal to 5)?
+```{r}
+may<-airquality[airquality$Month==5,]
+may[which.max(may$Ozone),]
+```
+
+
+
+More Resources
+
+Practice with subsetting with R
+
+http://www.ats.ucla.edu/stat/r/modules/subsetting.htm
+Subsetting vectors,lists,matrices
+http://adv-r.had.co.nz/Subsetting.html
+https://ramnathv.github.io/pycon2014-r/learn/subsetting.html
+Subsetting by string
+
+http://rpackages.ianhowson.com/cran/DataCombine/man/grepl.sub.html
